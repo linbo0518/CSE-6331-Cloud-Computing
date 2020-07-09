@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Python
+.python-version
+__pycache__
+.ipynb_checkpoints
+
+# Project
+assets
