@@ -1,0 +1,31 @@
+Method,Name,Error,Occurrences
+POST,/top_n,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",62
+POST,/distance,"('Connection aborted.', BrokenPipeError(32, 'Broken pipe'))",2
+POST,/largest,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",1
+GET,/largest,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",449
+GET,/largest,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",1
+GET,/scale,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",428
+POST,/date,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",1
+GET,/distance,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",1
+GET,/date,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",397
+POST,/compare,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",53
+GET,/compare,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",439
+POST,/date,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",68
+POST,/top_n,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",1
+POST,/top_n,"('Connection aborted.', BrokenPipeError(32, 'Broken pipe'))",5
+POST,/compare,"('Connection aborted.', BrokenPipeError(32, 'Broken pipe'))",4
+GET,/date,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",1
+POST,/date,"('Connection aborted.', BrokenPipeError(32, 'Broken pipe'))",8
+GET,/distance,"HTTPConnectionPool(host='0.0.0.0', port=3463): Max retries exceeded with url: /distance (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x105fba8d0>: Failed to establish a new connection: [Errno 54] Connection reset by peer'))",1
+POST,/compare,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",2
+GET,/scale,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",5
+GET,/distance,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",408
+POST,/distance,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",78
+POST,/largest,"('Connection aborted.', BrokenPipeError(32, 'Broken pipe'))",5
+POST,/scale,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",72
+POST,/distance,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",1
+GET,/top_n,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",426
+POST,/scale,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",2
+POST,/largest,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",75
+GET,/compare,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",2
+POST,/scale,"('Connection aborted.', BrokenPipeError(32, 'Broken pipe'))",8

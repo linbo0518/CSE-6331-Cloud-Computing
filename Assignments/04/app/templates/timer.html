@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if title %}
+<h3>{{ title }}</h3>
+{% endif %}
+
+{% if time_recordings %}
+{% for key in time_recordings %}
+<h4>{{ key }}: {{ time_recordings[key] }}(s)</h4>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

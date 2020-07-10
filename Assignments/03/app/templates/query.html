@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if title %}
+<h3>{{ title }}</h3>
+{% endif %}
+
+{{ wtf.quick_form(form) }}
+
+<br />
+
+{% if used_time %}
+<h4>{{ used_time }}(s) to do this query.</h4>
+{% endif %}
+
+<br />
+
+{% if message %}
+<h4>{{ message }}</h4>
+{% endif %}
+
+{% if result %}
+
+<h4>{{ result|length }} Result(s):</h4>
+
+<br />
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+        <th>State Name</th>
+        <th>County Name</th>
+        <th>2010 Population</th>
+        <th>2011 Population</th>
+        <th>2012 Population</th>
+        <th>2013 Population</th>
+        <th>2014 Population</th>
+        <th>2015 Population</th>
+        <th>2016 Population</th>
+        <th>2017 Population</th>
+        <th>2018 Population</th>
+        <th>2019 Population</th>
+    </tr>
+    {% for entity in result %}
+    <tr>
+        <td>{{ entity.state_name }}</td>
+        <td>{{ entity.county_name }}</td>
+        <td>{{ entity.pop_est_2010 }}</td>
+        <td>{{ entity.pop_est_2011 }}</td>
+        <td>{{ entity.pop_est_2012 }}</td>
+        <td>{{ entity.pop_est_2013 }}</td>
+        <td>{{ entity.pop_est_2014 }}</td>
+        <td>{{ entity.pop_est_2015 }}</td>
+        <td>{{ entity.pop_est_2016 }}</td>
+        <td>{{ entity.pop_est_2017 }}</td>
+        <td>{{ entity.pop_est_2018 }}</td>
+        <td>{{ entity.pop_est_2019 }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock %}

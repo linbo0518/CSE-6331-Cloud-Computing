@@ -1,0 +1,197 @@
+# CSE 6331 Cloud Computing
+
+- Name: Bo Lin
+- ID: 1001778270
+
+## Environment
+
+- Python: 3.7.7
+- Locust: 1.1
+
+## Result
+
+| Type | Name       | Request Count | Failure Count | Median Response Time | Average Response Time | Min Response Time  | Max Response Time  | Average Content Size | Requests/s         | Failures/s          | 50% | 66% | 75% | 80% | 90%  | 95%   | 98%   | 99%   | 99.9% | 99.99% | 99.999% | 100%  |
+| ---- | ---------- | ------------- | ------------- | -------------------- | --------------------- | ------------------ | ------------------ | -------------------- | ------------------ | ------------------- | --- | --- | --- | --- | ---- | ----- | ----- | ----- | ----- | ------ | ------- | ----- |
+| GET  | /compare   | 648           | 441           | 22                   | 536.2635652224222     | 2.1338462829589844 | 12485.99910736084  | 1027.013888888889    | 3.3030374082933913 | 2.247900458421891   | 22  | 37  | 51  | 60  | 2400 | 3100  | 5000  | 9200  | 12000 | 12000  | 12000   | 12000 |
+| POST | /compare   | 160           | 59            | 82                   | 188.39336782693863    | 2.1970272064208984 | 3041.8360233306885 | 725.9375             | 0.8155647921712077 | 0.30073951711313285 | 82  | 95  | 110 | 120 | 450  | 770   | 1100  | 2700  | 3000  | 3000   | 3000    | 3000  |
+| GET  | /date      | 607           | 398           | 21                   | 558.2228103618842     | 2.068042755126953  | 12513.318061828613 | 909.339373970346     | 3.094048930299519  | 2.0287174205258793  | 21  | 35  | 52  | 78  | 2500 | 3000  | 5700  | 10000 | 13000 | 13000  | 13000   | 13000 |
+| POST | /date      | 209           | 77            | 81                   | 1750.6223089957352    | 2.5396347045898438 | 94349.81298446655  | 49387.21052631579    | 1.06533150977364   | 0.3924905562323937  | 81  | 110 | 140 | 320 | 950  | 3000  | 17000 | 71000 | 94000 | 94000  | 94000   | 94000 |
+| GET  | /distance  | 614           | 410           | 21                   | 557.6584098393444     | 2.0852088928222656 | 12530.467748641968 | 855.5374592833876    | 3.1297298899570096 | 2.08988477993872    | 21  | 37  | 51  | 67  | 2300 | 4000  | 5700  | 7900  | 13000 | 13000  | 13000   | 13000 |
+| POST | /distance  | 167           | 81            | 74                   | 216.8756787648458     | 2.3550987243652344 | 2600.86989402771   | 53665.886227544914   | 0.851245751828698  | 0.4128796760366739  | 74  | 96  | 110 | 150 | 770  | 1100  | 1500  | 2300  | 2600  | 2600   | 2600    | 2600  |
+| GET  | /largest   | 658           | 450           | 23                   | 667.5778656382691     | 2.0170211791992188 | 12853.711128234863 | 815.8784194528876    | 3.3540102078040914 | 2.2937759779815217  | 23  | 42  | 52  | 92  | 2600 | 3800  | 7900  | 11000 | 13000 | 13000  | 13000   | 13000 |
+| POST | /largest   | 171           | 81            | 74                   | 216.49695279305442    | 2.1681785583496094 | 3086.657762527466  | 621.3801169590644    | 0.8716348716329783 | 0.4128796760366739  | 74  | 90  | 110 | 130 | 700  | 920   | 1300  | 2900  | 3100  | 3100   | 3100    | 3100  |
+| GET  | /scale     | 642           | 433           | 22                   | 613.543889232885      | 2.1491050720214844 | 18068.08114051819  | 858.1370716510903    | 3.272453728586971  | 2.2071222188133306  | 23  | 41  | 54  | 83  | 2600 | 3500  | 6400  | 10000 | 18000 | 18000  | 18000   | 18000 |
+| POST | /scale     | 204           | 82            | 82                   | 2346.2577357011683    | 2.299070358276367  | 93467.51523017883  | 74289.17647058824    | 1.0398451100182897 | 0.4179769559877439  | 82  | 100 | 200 | 350 | 1600 | 10000 | 30000 | 78000 | 93000 | 93000  | 93000   | 93000 |
+| GET  | /top_n     | 637           | 426           | 19                   | 427.0072282764189     | 2.171754837036133  | 12498.582124710083 | 679.0423861852433    | 3.2469673288316208 | 2.1714412591558405  | 19  | 35  | 50  | 54  | 2200 | 2900  | 4400  | 5300  | 12000 | 12000  | 12000   | 12000 |
+| POST | /top_n     | 211           | 68            | 83                   | 158.390502794094      | 2.286195755004883  | 1449.7296810150146 | 2358.260663507109    | 1.0755260696757802 | 0.3466150366727633  | 83  | 100 | 110 | 140 | 320  | 780   | 1200  | 1400  | 1400  | 1400   | 1400    | 1400  |
+|      | Aggregated | 4928          | 3006          | 29                   | 632.1482365201045     | 2.0170211791992188 | 94349.81298446655  | 7796.716112012987    | 25.119395598873197 | 15.322423532916565  | 29  | 54  | 85  | 110 | 2100 | 3100  | 5400  | 10000 | 78000 | 94000  | 94000   | 94000 |
+
+## Terminal Output
+
+```plain
+ Name                                                          # reqs      # fails     Avg     Min     Max  |  Median   req/s failures/s
+--------------------------------------------------------------------------------------------------------------------------------------------
+ GET /compare                                                     648  441(68.06%)     536       2   12485  |      22    3.30    2.25
+ POST /compare                                                    160   59(36.88%)     188       2    3041  |      82    0.82    0.30
+ GET /date                                                        607  398(65.57%)     558       2   12513  |      21    3.09    2.03
+ POST /date                                                       209   77(36.84%)    1750       2   94349  |      81    1.07    0.39
+ GET /distance                                                    614  410(66.78%)     557       2   12530  |      21    3.13    2.09
+ POST /distance                                                   167   81(48.50%)     216       2    2600  |      74    0.85    0.41
+ GET /largest                                                     658  450(68.39%)     667       2   12853  |      23    3.35    2.29
+ POST /largest                                                    171   81(47.37%)     216       2    3086  |      74    0.87    0.41
+ GET /scale                                                       642  433(67.45%)     613       2   18068  |      22    3.27    2.21
+ POST /scale                                                      204   82(40.20%)    2346       2   93467  |      82    1.04    0.42
+ GET /top_n                                                       637  426(66.88%)     427       2   12498  |      19    3.25    2.17
+ POST /top_n                                                      211   68(32.23%)     158       2    1449  |      83    1.08    0.35
+--------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregated                                                      4928 3006(61.00%)     632       2   94349  |      29   25.12   15.32
+
+Percentage of the requests completed within given times
+ Type                 Name                                                           # reqs    50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100%
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ GET                  /compare                                                          648     22     37     51     60   2400   3100   5000   9200  12000  12000  12000
+ POST                 /compare                                                          160     82     95    110    120    450    770   1100   2700   3000   3000   3000
+ GET                  /date                                                             607     21     35     52     78   2500   3000   5700  10000  13000  13000  13000
+ POST                 /date                                                             209     81    110    140    320    950   3000  17000  71000  94000  94000  94000
+ GET                  /distance                                                         614     21     37     51     67   2300   4000   5700   7900  13000  13000  13000
+ POST                 /distance                                                         167     74     96    110    150    770   1100   1500   2300   2600   2600   2600
+ GET                  /largest                                                          658     23     42     52     92   2600   3800   7900  11000  13000  13000  13000
+ POST                 /largest                                                          171     74     90    110    130    700    920   1300   2900   3100   3100   3100
+ GET                  /scale                                                            642     23     41     54     83   2600   3500   6400  10000  18000  18000  18000
+ POST                 /scale                                                            204     82    100    200    350   1600  10000  30000  78000  93000  93000  93000
+ GET                  /top_n                                                            637     19     35     50     54   2200   2900   4400   5300  12000  12000  12000
+ POST                 /top_n                                                            211     83    100    110    140    320    780   1200   1400   1400   1400   1400
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ None                 Aggregated                                                       4928     29     54     85    110   2100   3100   5400  10000  78000  94000  94000
+
+Error report
+ # occurrences      Error
+--------------------------------------------------------------------------------------------------------------------------------------------
+ 78                 POST /distance: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 449                GET /largest: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 1                  POST /date: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 408                GET /distance: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 397                GET /date: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 2                  POST /scale: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 2                  POST /compare: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 439                GET /compare: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 1                  POST /distance: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 8                  POST /date: "ConnectionError(ProtocolError('Connection aborted.', BrokenPipeError(32, 'Broken pipe')))"
+ 4                  POST /compare: "ConnectionError(ProtocolError('Connection aborted.', BrokenPipeError(32, 'Broken pipe')))"
+ 75                 POST /largest: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 426                GET /top_n: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 428                GET /scale: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 62                 POST /top_n: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 72                 POST /scale: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 68                 POST /date: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 53                 POST /compare: "ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer')))"
+ 1                  GET /distance: 'ConnectionError(MaxRetryError("HTTPConnectionPool(host=\'0.0.0.0\', port=3463): Max retries exceeded with url: /distance (Caused by NewConnectionError(\'<urllib3.connection.HTTPConnection object at 0x105fba8d0>: Failed to establish a new connection: [Errno 54] Connection reset by peer\'))"))'
+ 8                  POST /scale: "ConnectionError(ProtocolError('Connection aborted.', BrokenPipeError(32, 'Broken pipe')))"
+ 2                  GET /compare: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 5                  POST /largest: "ConnectionError(ProtocolError('Connection aborted.', BrokenPipeError(32, 'Broken pipe')))"
+ 5                  GET /scale: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 1                  GET /distance: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 2                  POST /distance: "ConnectionError(ProtocolError('Connection aborted.', BrokenPipeError(32, 'Broken pipe')))"
+ 5                  POST /top_n: "ConnectionError(ProtocolError('Connection aborted.', BrokenPipeError(32, 'Broken pipe')))"
+ 1                  GET /largest: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 1                  GET /date: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 1                  POST /top_n: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ 1                  POST /largest: "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+--------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+## Code
+
+```python
+import random
+from bs4 import BeautifulSoup
+from locust import HttpUser, task, between
+
+
+class User(HttpUser):
+    wait_time = between(5, 10)
+
+    @task
+    def top_n_page(self):
+        sub_url = '/top_n'
+        response = self.client.get(sub_url)
+        token = self._parse_csrf_token(response)
+        data = self._packaging_data(token, top_n=random.randint(5, 10))
+        response = self.client.post(sub_url, data)
+
+    @task
+    def distance_page(self):
+        sub_url = '/distance'
+        response = self.client.get(sub_url)
+        token = self._parse_csrf_token(response)
+        data = self._packaging_data(token,
+                                    latitude=random.uniform(-90, 90),
+                                    longitude=random.uniform(-180, 180),
+                                    distance=random.randint(0, 10000))
+        response = self.client.post(sub_url, data)
+
+    @task
+    def data_page(self):
+        sub_url = '/date'
+        response = self.client.get(sub_url)
+        token = self._parse_csrf_token(response)
+        date1 = random.randint(1, 15)
+        date2 = random.randint(1, 15)
+        start_date = '2020-06-' + str(min(date1, date2))
+        end_date = '2020-06-' + str(max(date1, date2))
+        data = self._packaging_data(token,
+                                    start_date=start_date,
+                                    end_date=end_date,
+                                    magnitude=random.randint(0, 10))
+        response = self.client.post(sub_url, data)
+
+    @task
+    def scale_page(self):
+        sub_url = '/scale'
+        response = self.client.get(sub_url)
+        token = self._parse_csrf_token(response)
+        mag1 = random.randint(1, 10)
+        mag2 = random.randint(1, 10)
+        data = self._packaging_data(token,
+                                    recent_days=random.randint(20, 50),
+                                    low_mag=min(mag1, mag2),
+                                    high_mag=max(mag1, mag2))
+        response = self.client.post(sub_url, data)
+
+    @task
+    def compare_page(self):
+        sub_url = '/compare'
+        response = self.client.get(sub_url)
+        token = self._parse_csrf_token(response)
+        data = self._packaging_data(token,
+                                    loc1_latitude=random.uniform(-90, 90),
+                                    loc1_longitude=random.uniform(-180, 180),
+                                    loc2_latitude=random.uniform(-90, 90),
+                                    loc2_longitude=random.uniform(-180, 180),
+                                    distance=random.randint(0, 10000))
+        response = self.client.post(sub_url, data)
+
+    @task
+    def largest_page(self):
+        sub_url = '/largest'
+        response = self.client.get(sub_url)
+        token = self._parse_csrf_token(response)
+        data = self._packaging_data(token,
+                                    latitude=random.uniform(-90, 90),
+                                    longitude=random.uniform(-180, 180),
+                                    distance=random.randint(0, 10000))
+        response = self.client.post(sub_url, data)
+
+    def _parse_csrf_token(self, response):
+        soup = BeautifulSoup(response.content, 'html.parser')
+        csrf_token = soup.find('input', attrs={'name': 'csrf_token'})['value']
+        return csrf_token
+
+    def _packaging_data(self, csrf_token, **kwargs):
+        data = {'csrf_token': csrf_token}
+        for key in kwargs:
+            data[key] = kwargs[key]
+        data['submit'] = 'Submit'
+        return data
+
+```

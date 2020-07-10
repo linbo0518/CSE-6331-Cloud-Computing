@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{{ wtf.quick_form(form) }}
+
+<br />
+
+{% if message %}
+<h3>Result: {{ message }}</h3>
+{% endif %}
+
+<br />
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Room</th>
+        <th>Telnum</th>
+        <th>Picture</th>
+        <th>Keywords</th>
+    </tr>
+    {% for entity in result %}
+    <tr>
+        <td>{{ entity.name }}</td>
+        <td>{{ entity.salary }}</td>
+        <td>{{ entity.room }}</td>
+        <td>{{ entity.telnum }}</td>
+        {% if entity.picture %}
+        <td><img src="{{ url_for('static', filename=entity.picture) }}" width="256" height="256" /></td>
+        {% else %}
+        <td>picture not available</td>
+        {% endif %}
+        <td>{{ entity.keywords }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

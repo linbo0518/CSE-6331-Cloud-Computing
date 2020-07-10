@@ -1,0 +1,79 @@
+Count,Message,Traceback,Nodes
+450,object of type 'NoneType' has no len(),"  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 284, in run
+    self.execute_next_task()
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 309, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 418, in execute_task
+    task(self.user)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 74, in largest_page
+    token = self._parse_csrf_token(response)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 82, in _parse_csrf_token
+    soup = BeautifulSoup(response.content, 'html.parser')
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/bs4/__init__.py"", line 307, in __init__
+    elif len(markup) <= 256 and (
+",local
+410,object of type 'NoneType' has no len(),"  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 284, in run
+    self.execute_next_task()
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 309, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 418, in execute_task
+    task(self.user)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 22, in distance_page
+    token = self._parse_csrf_token(response)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 82, in _parse_csrf_token
+    soup = BeautifulSoup(response.content, 'html.parser')
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/bs4/__init__.py"", line 307, in __init__
+    elif len(markup) <= 256 and (
+",local
+398,object of type 'NoneType' has no len(),"  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 284, in run
+    self.execute_next_task()
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 309, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 418, in execute_task
+    task(self.user)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 33, in data_page
+    token = self._parse_csrf_token(response)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 82, in _parse_csrf_token
+    soup = BeautifulSoup(response.content, 'html.parser')
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/bs4/__init__.py"", line 307, in __init__
+    elif len(markup) <= 256 and (
+",local
+441,object of type 'NoneType' has no len(),"  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 284, in run
+    self.execute_next_task()
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 309, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 418, in execute_task
+    task(self.user)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 61, in compare_page
+    token = self._parse_csrf_token(response)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 82, in _parse_csrf_token
+    soup = BeautifulSoup(response.content, 'html.parser')
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/bs4/__init__.py"", line 307, in __init__
+    elif len(markup) <= 256 and (
+",local
+426,object of type 'NoneType' has no len(),"  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 284, in run
+    self.execute_next_task()
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 309, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 418, in execute_task
+    task(self.user)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 14, in top_n_page
+    token = self._parse_csrf_token(response)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 82, in _parse_csrf_token
+    soup = BeautifulSoup(response.content, 'html.parser')
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/bs4/__init__.py"", line 307, in __init__
+    elif len(markup) <= 256 and (
+",local
+433,object of type 'NoneType' has no len(),"  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 284, in run
+    self.execute_next_task()
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 309, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/locust/user/task.py"", line 418, in execute_task
+    task(self.user)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 48, in scale_page
+    token = self._parse_csrf_token(response)
+  File ""/Users/linbo0518/Documents/UTA/Courses/2020 Summer/CSE-6331-Cloud-Computing/Assignments/05/app/locustfile.py"", line 82, in _parse_csrf_token
+    soup = BeautifulSoup(response.content, 'html.parser')
+  File ""/Users/linbo0518/.pyenv/versions/3.7.7/envs/cse-6331/lib/python3.7/site-packages/bs4/__init__.py"", line 307, in __init__
+    elif len(markup) <= 256 and (
+",local

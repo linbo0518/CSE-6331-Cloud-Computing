@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if title %}
+<h3>{{ title }}</h3>
+{% endif %}
+
+{{ wtf.quick_form(form) }}
+
+<br />
+
+{% if used_time %}
+<h4>{{ used_time }}(s) to do this query.</h4>
+{% endif %}
+
+<br />
+
+{% if message %}
+<h4>{{ message }}</h4>
+{% endif %}
+
+{% if result %}
+
+<h4>{{ result|length }} Result(s):</h4>
+
+<br />
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+        <th>State Name</th>
+        <th>County Name</th>
+        {% for year in year_range %}
+        <th>{{year}} Population</th>
+        {% endfor %}
+    </tr>
+    {% for entity in result %}
+    <tr>
+        <td>{{ entity.state_name }}</td>
+        <td>{{ entity.county_name }}</td>
+        {% for year in year_range %}
+        <td>{{ entity|attr("pop_est_" + year) }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock %}

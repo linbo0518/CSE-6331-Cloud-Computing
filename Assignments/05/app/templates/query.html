@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if title %}
+<h3>{{ title }}</h3>
+{% endif %}
+
+{{ wtf.quick_form(form) }}
+
+{% if message %}
+<h4>{{ message }}</h4>
+{% endif%}
+
+{% if result %}
+
+<br />
+
+<h4>{{ result|length }} Result(s):</h4>
+
+<br />
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+        <th>time</th>
+        <th>latitude</th>
+        <th>longitude</th>
+        <th>depth</th>
+        <th>mag</th>
+        <th>magType</th>
+        <th>nst</th>
+        <th>gap</th>
+        <th>dmin</th>
+        <th>rms</th>
+        <th>net</th>
+        <th>id</th>
+        <th>updated</th>
+        <th>place</th>
+        <th>type</th>
+        <th>horizontalError</th>
+        <th>depthError</th>
+        <th>magError</th>
+        <th>magNst</th>
+        <th>status</th>
+        <th>locationSource</th>
+        <th>magSource</th>
+    </tr>
+    {% for entity in result %}
+    <tr>
+        <td>{{ entity.time }}</td>
+        <td>{{ entity.latitude }}</td>
+        <td>{{ entity.longitude }}</td>
+        <td>{{ entity.depth }}</td>
+        <td>{{ entity.mag }}</td>
+        <td>{{ entity.magType }}</td>
+        <td>{{ entity.nst }}</td>
+        <td>{{ entity.gap }}</td>
+        <td>{{ entity.dmin }}</td>
+        <td>{{ entity.rms }}</td>
+        <td>{{ entity.net }}</td>
+        <td>{{ entity.id }}</td>
+        <td>{{ entity.updated }}</td>
+        <td>{{ entity.place }}</td>
+        <td>{{ entity.type }}</td>
+        <td>{{ entity.horizontalError }}</td>
+        <td>{{ entity.depthError }}</td>
+        <td>{{ entity.magError }}</td>
+        <td>{{ entity.magNst }}</td>
+        <td>{{ entity.status }}</td>
+        <td>{{ entity.locationSource }}</td>
+        <td>{{ entity.magSource }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock %}
