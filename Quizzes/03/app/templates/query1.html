@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if title %}
+<h3>{{ title }}</h3>
+{% endif %}
+
+{{ wtf.quick_form(form) }}
+
+{% if message %}
+<h4>{{ message }}</h4>
+{% endif%}
+
+<br />
+
+{% if used_time %}
+<h4>{{ used_time }}(s) to do time query.</h4>
+{% endif %}
+
+<br />
+
+{% if result %}
+
+<br />
+
+<h4>{{ result|length }} Result(s):</h4>
+
+<br />
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+        <th>Entity</th>
+        <th>Code</th>
+        <th>Year</th>
+        <th>Prevalence</th>
+        <th>NumberTerroristIncidents</th>
+    </tr>
+    {% for entity in result %}
+    <tr>
+        <td>{{ entity.entity }}</td>
+        <td>{{ entity.code }}</td>
+        <td>{{ entity.year }}</td>
+        <td>{{ entity.prevalence }}</td>
+        <td>{{ entity.ti_info.num_ti }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock %}

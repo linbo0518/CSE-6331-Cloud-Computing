@@ -1,0 +1,20 @@
+Name,ID,Room,State,Picture,Caption
+Alice,101,550,TX,a.jpg,Alice Not here
+Hellen,103,420,LA,h.jpg,Helen is very smart
+Bob,99,,TX,b.jpg,Bob is here
+Dave,95,525,NN,,Who is this
+Carol, ,-1,CA,c.png,Carol is rich for now
+Eve,88,550,CA,e.jpg,Eve is eve is
+Zeke,80,520,,,Zeke is not here
+Zeb,97,,TX, ,
+Tina,,,,r.jpg,
+Meena,90,400,TX,,Meena Meena
+Dish,89,400,LA,,
+Tong,85,420,TX,t.jpg,Tong not Tang
+Mohit, ,302,NN,,
+Steve,80,900,,s.jpg,
+Li,78,905,CA,,Li is a different Li
+Mike, ,,TX,,
+Tang,105,808,,t.jpg,Tang great Tang
+Billy,42,50,CA,,
+Blue,100,,NN,l.jpg,Blue blue blue blue

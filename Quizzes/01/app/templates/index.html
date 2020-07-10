@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if name %}
+Your inpur is "<b>{{ name }}</b>"!
+{% endif %}
+
+{% if message %}
+It is "<b>{{ message }}</b>"!
+{% endif %}
+
+{% if upload_status %}
+Upload {{ upload_status }}!
+{% endif %}
+
+{{ wtf.quick_form(form) }}
+{% endblock %}

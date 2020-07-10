@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+<head>
+    <meta charset="utf-8">
+    {% for jsfile_name in script_list %}
+    <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+</head>
+
+{% if title %}
+<h3>{{ title }}</h3>
+{% endif %}
+
+{{ wtf.quick_form(form) }}
+
+{% if message %}
+<h4>{{ message }}</h4>
+{% endif%}
+
+{% if viz %}
+{{ viz|safe }}
+{% endif %}
+
+{% endblock %}

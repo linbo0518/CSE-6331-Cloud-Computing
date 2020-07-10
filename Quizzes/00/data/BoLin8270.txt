@@ -1,0 +1,250 @@
+
+Name:
+Last 4 digits ID:
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q0, 8.10, Summer 2020   (c) DL, UTA, 2020
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     ______B__L_________
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4. Using the cloud services provider, all functionality possible should be implemented on that provider.
+    (Of course, displaying web pages through a browser and the user interface is "local")
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ 5. Show a web page and interface (which resides on the cloud provider) with your name and 
+    student ID in large font at the top of every web page dispayed (for this quiz)
+    The cloud service provider is IBM Cloud (BlueMix).
+    
+ 6. Upload all data files (*jpg and *csv, not this quiz) to cloud service, 
+    then show the names of each (stored on cloud) on your screen in a web page.
+
+ 7. Through a web interface (page), allow user to give a room number and you show the name 
+    and the corresponding picture (or show "no picture available").
+
+ 8. (Web Page) allow a user to give two "grade" values and show all pictures, names, and states for each person
+    within that range (matching).
+
+ 9. (Web page) allow a user to give a name then modify either the points or the picture.
+
+ 10. Show us, in a link, the application running and we will ttry it out. Only for parts 5, 6, 7, 8, 9
+
+ 11. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+
+
+############################## server.py ##############################
+import os
+import pandas as pd
+from flask import Flask, request, render_template, redirect, url_for
+from utils import init_check, is_ext_valid, parse_csv, merge_df_to_base, save_df_to_file
+from config import opt
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def home():
+    return app.send_static_file("index.html")
+
+
+@app.route("/database")
+def show_database():
+    return parse_csv(opt.base_csv_path)
+
+
+@app.route("/edit_database")
+def edit_database():
+    return parse_csv(opt.base_csv_path, editable=True)
+
+
+@app.route("/show_image", methods=["GET", "POST"])
+def input_to_show():
+    if request.method == "POST":
+        print(12345)
+        return redirect(url_for("show_image"))
+    return app.send_static_file("show_image.html")
+
+
+@app.route("/show_upload")
+def show_upload():
+    csv_file = os.listdir(opt.upload_csv_folder)
+    image_file = os.listdir(opt.upload_image_folder)
+    return render_template("show_upload.html",
+                           csv_file=csv_file,
+                           image_file=image_file)
+
+
+@app.route("/show_image/<string:name>")
+def show_image(name):
+    database = pd.read_csv(opt.base_csv_path)
+    name_list = database["room"].tolist()
+    if name in name_list:
+        image_filename = database[database["name"].str.contains(
+            name, case=False)]["picture"].values[0]
+        image_path = os.path.join(opt.upload_image_folder, image_filename)
+        print(image_path)
+        return render_template("show_image.html", image="file://" + image_path)
+    else:
+        return render_template("image_failed.html", name=name)
+
+
+@app.route("/upload_csv", methods=["GET", "POST"])
+def upload_csv():
+    if request.method == "POST":
+        if "file" not in request.files:
+            return app.send_static_file('failed.html')
+        file = request.files["file"]
+        if file.filename == '':
+            return app.send_static_file('failed.html')
+        # opt: allowed_csv_ext
+        if file and is_ext_valid(file.filename, opt.allowed_csv_ext):
+            filename = os.path.join(opt.upload_csv_folder, file.filename)
+            file.save(filename)
+            database = pd.read_csv(opt.base_csv_path)
+            new_df = pd.read_csv(filename, skipinitialspace=True)
+            database = merge_df_to_base(database, new_df)
+            save_df_to_file(database, opt.base_csv_path)
+            return app.send_static_file("success.html")
+        else:
+            return app.send_static_file("failed.html")
+    return app.send_static_file("upload.html")
+
+
+@app.route("/upload_image", methods=["GET", "POST"])
+def upload_image():
+    if request.method == "POST":
+        if "file" not in request.files:
+            return app.send_static_file('failed.html')
+        file = request.files["file"]
+        if file.filename == '':
+            return app.send_static_file('failed.html')
+        # opt: allowed_image_ext
+        if file and is_ext_valid(file.filename, opt.allowed_image_ext):
+            filename = file.filename
+            # opt: upload_image_folder
+            file.save(os.path.join(opt.upload_image_folder, filename))
+            return app.send_static_file("success.html")
+        else:
+            return app.send_static_file("failed.html")
+    return app.send_static_file("upload.html")
+
+
+if __name__ == "__main__":
+    init_check()
+    app.run(host=opt.host, port=opt.port, debug=True)
+
+############################## utils.py ##############################
+import os
+import pandas as pd
+from flask import Flask, request
+from config import opt
+
+
+def init_check():
+    if not os.path.exists(opt.upload_base_folder):
+        os.mkdir(opt.upload_base_folder)
+    if not os.path.exists(opt.upload_csv_folder):
+        os.mkdir(opt.upload_csv_folder)
+    if not os.path.exists(opt.upload_image_folder):
+        os.mkdir(opt.upload_image_folder)
+    if not os.path.exists(opt.base_csv_path):
+        with open(opt.base_csv_path, 'w') as f:
+            f.write(opt.csv_header)
+
+
+def is_ext_valid(filename, allowed_ext=None):
+    if allowed_ext is None:
+        return True
+    _, ext = os.path.splitext(filename)
+    return ext[1:] in allowed_ext
+
+
+def refine_name_and_dtype(df):
+    return df.rename(columns=opt.columns_map).astype(opt.dtype_map)
+
+
+def merge_df_to_base(base_df, new_df):
+    # new_df = refine_name_and_dtype(new_df)
+    return base_df.append(new_df).drop_duplicates().reset_index(drop=True)
+
+
+def save_df_to_file(df, filename):
+    df.to_csv(filename, index=False)
+
+
+def parse_csv(csv_file, editable=False):
+    df = pd.read_csv(csv_file)
+    html = df.to_html(na_rep="NULL")
+    html += '<br />\n<a href=" / "> Back to Home </a>'
+    if editable:
+        html = html.replace("<td>", "<td contenteditable=true>")
+        html += '<br/ >\n<a href=" /save_database "> Submit </a></body>'
+    return html
+
+
+############################## index.html ##############################
+<html>
+
+<title>CSE-6331</title>
+
+<h1>CSE 6331 Cloud Computing</h1>
+<h2>ID: 1001778270</h2>
+<h2>Name: Bo Lin</h2>
+
+<a href="/upload_csv"> Upload CSV </a> <br />
+<a href="/upload_image"> Upload Image </a> <br />
+<a href="/database"> Show Database </a> <br />
+<a href="/show_upload"> Show Upload </a> <br />
+<a href="/show_image"> Show Image </a> <br />
+
+</html>
+
+############################## upload.html ##############################
+<html>
+
+<title>Upload new File</title>
+
+<h1>Upload new File</h1>
+
+<form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <input type=submit value=Upload>
+</form>
+
+</html>

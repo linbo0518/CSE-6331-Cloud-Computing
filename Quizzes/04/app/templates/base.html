@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="static/style.css">
+{% endblock %}
+
+{% block title %}
+{% if title %}{{ title }} - {{ appname }}{% else %}{{ appname }}{% endif %}
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
+            <a class="navbar-brand" href="{{ url_for('pie_chart') }}">Pie Chart</a>
+            <a class="navbar-brand" href="{{ url_for('bar_chart') }}">Bar Chart</a>
+            <a class="navbar-brand" href="{{ url_for('scatter_chart') }}">Scatter Chart</a>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div id="title_bar" class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 id="main_title">{{ appname }}</h1>
+            <h3 id="student_id">1001778270
+        </h2>
+        <h4 id="student_name">Lin, Bo</h3>
+    </div>
+</div>
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-info" role="alert">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block app_content %}
+    {% endblock %}
+</div>
+{% endblock %}

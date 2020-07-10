@@ -1,0 +1,162 @@
+
+Name: Bo Lin
+Last 4 digits ID: 8270
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q6, 8.10, Summer 2020   (c) DL, UTA, 2020
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     _____Bo_Lin______
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (not this quiz) to cloud service, AWS.
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+ 5. Your goal is to make a very simple spell checker and word assistant.
+    You are NOT asked to know how either of these work, we will give you all of the parts needed 
+    (except your part, which you will implement on AWS)
+
+ 6. You will present to a user a web page with a text box and a few buttons, or options that she 
+    may use. There will be a large entry box, where she may enter text, in English, 
+    or some words perhaps in Spanish.
+    Then she can hit a button (or somehow select) "Spell Check".
+    Your spell checker will search word by word by first looking at the most frequent words to see if each word is in there.
+    If it is, good, mark each word in green, if it is NOT in that list, allow her to select an option 
+    that will try to find it in the Spanish word list, and you can suggest the English equivalent
+    (it is in that list). 
+    If she does not select the the Spanish option, she can select the "Check" button. In that case,
+    you should suggest the closest English word in that frequency list.
+    Match as any letters from the first character as possible in the frequency list.
+    The suggested replacement should have the same number of characters plus or minus one, as the original.
+    Replace that word in her text box in red, and she can then select "accept" or "not",
+    which replaces that word and continues.
+
+    As any part of this app works (enter text, selection buttons, Spanish search and replace, English search and replace)
+    Please show us.
+
+  7. Show us, in a link, the application running and we will try it out. 
+
+ 100. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+
+
+""""""""""code""""""""""
+"""Cloud Computing
+Author: Bo Lin
+Mav ID: 1001778270
+Date: Jun/29/2020
+"""
+
+import os, string
+from datetime import datetime
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms import fields, validators
+from werkzeug.utils import secure_filename
+
+from utils import english_freq, spanish2english
+
+app = Flask(__name__, static_folder='assets')
+Bootstrap(app)
+
+# config
+app.jinja_env.filters['zip'] = zip
+app.config['host'] = '0.0.0.0'
+app.config['port'] = int(os.getenv('PORT', '80'))
+app.config['SECRET_KEY'] = '1001778270'
+app.config['project_dir'] = os.path.abspath(os.path.dirname(__file__))
+app.config['upload_dir'] = os.path.join(app.config['project_dir'], 'assets')
+
+
+# form
+class InputForm(FlaskForm):
+    inputs = fields.TextField('Input text here:')
+    submit = fields.SubmitField('Spell Check')
+
+class ReplaceForm(FlaskForm):
+    submit = fields.SubmitField('Spanish -> English')
+
+# router
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    title = 'Spell Checker'
+    form = InputForm()
+    words = []
+    is_green = []
+    if form.validate_on_submit():
+        text = form.inputs.data
+        for c in string.punctuation:
+            text = text.replace(c, "")
+        words = text.split(' ')
+        is_green = []
+        for idx, word in enumerate(words):
+            if word in english_freq:
+                is_green.append(True)
+            elif word in spanish2english.keys():
+                words[idx] = spanish2english[word]
+                is_green.append(True)
+            else:
+                is_green.append(False)
+        return render_template('index.html',
+                               title=title,
+                               form=form,
+                               words=words,
+                               is_green=is_green)
+    return render_template('index.html', title=title, form=form)
+
+
+@app.errorhandler(404)
+@app.route('/error_404')
+def page_not_found(error):
+    return render_template('404.html', title='404')
+
+
+@app.errorhandler(500)
+@app.route('/error_500')
+def requests_error(error):
+    return render_template('500.html', title='500')
+
+
+#main
+if __name__ == '__main__':
+    app.run(host=app.config['host'], port=app.config['port'])

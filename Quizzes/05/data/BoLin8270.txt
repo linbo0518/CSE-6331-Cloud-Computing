@@ -1,0 +1,92 @@
+
+Name:
+Last 4 digits ID:
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q5, 8.10, Summer 2020   (c) DL, UTA, 2020
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     _________________
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (*csv, not this quiz) to cloud service. 
+
+ 4c. Screen capture (screen shots) may be saved as jpg, bmp, gif, or anything that we can see on our browsers. 
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (and screen shots) on Canvas.
+
+ 5.  Please deploy (show) a simple AWS webpage which will display:
+     last 4 digits of your student ID, your name, and IP address, and below that the picture "aws.jpg" 
+     below that show a counter, which you have implemented in your application, which starts at 0, and then
+     continues to update (increment) at least once per second (you may implement this any way you wish)
+     (in that order, top to bottom) 
+     and show us (send us the URL in chat). 
+     
+     This should be the url of ElasticBeanstalk, or a Load balancer, not an individual EC2 instance
+ 
+     If you are using Python the IP address can be obtained through:
+        import requests
+        ip = requests.get('https://checkip.amazonaws.com').text.strip()
+        { Please make sure to include "requests" in your requirements.txt }
+     
+     If using PHP or another language, make an HTTP GET request to https://checkip.amazonaws.com 
+     and show the resulting IP on your deployed app.
+
+ 6. Then, take a full-screen screenshot showing your AWS EC2 page with your single running instance. 
+    Please ensure that all screenshots are FULL SCREEN with the OS date/time clearly visible as well as the AWS username,
+    in the top right of the AWS management console.
+    Save this as aws.jpg
+
+ 7. Start jmeter (locally) and run it (change parameters) until you get at least 1 (no more than 4) more EC2 instance 
+    which were created by AWS for scaling.
+
+ 8. When your app has scaled to multiple instances, let us know in chat that #8 is ready. 
+    (We should be able to see the IP address of the website change upon refreshing)
+
+ 9. Then screenshot the AWS EC2 page showing MULTIPLE running instances, (those created by AWS to scale your app). 
+    Save this screenshot as mul.jpg
+
+ 10. Then, copy your two screen shots to AWS, and on AWS, deploy a simple webpage to show aws.jpg and mul.jpg
+     and show us (send the URL in chat).
+
+ 11. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+
